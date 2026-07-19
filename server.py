@@ -457,7 +457,18 @@ body {{
         pages = all_pages(); categories = load_categories(); favorites = load_favorites()
         updated = sorted(pages, key=lambda p: p.get("updated", ""), reverse=True)[:8]
         cards = f'''<div class="stats"><div><strong>{len(pages)}</strong><span>Procedimientos</span></div><div><strong>{len(categories)}</strong><span>Categorías</span></div><div><strong>{len(favorites)}</strong><span>Favoritos</span></div><div><strong>{sum(int(p.get("views",0)) for p in pages)}</strong><span>Consultas</span></div></div>'''
-        templates = '''<section><h2>Crear desde plantilla</h2><div class="template-grid"><a href="/new?template=procedimiento">📋 Procedimiento técnico</a><a href="/new?template=ces">📋 Procedimiento CES</a><a href="/new?template=proofpoint">📋 Procedimiento ProofPoint</a><a href="/new?template=splunk">🔎 Búsqueda Splunk</a><a href="/new?template=incidencia">🚨 Informe de incidencia</a><a href="/new">📄 Página en blanco</a></div></section>'''
+        templates = '''<section><h2>Crear desde plantilla</h2><div class="template-grid">
+<a href="/new?template=procedimiento">📋 Procedimiento técnico</a>
+<a href="/new?template=tareas">📋 Tareas</a>
+<a href="/new?template=ces">📋 Procedimiento CES</a>
+<a href="/new?template=proofpoint">📋 Procedimiento ProofPoint</a>
+<a href="/new?template=correos">📋 Respuestas correos</a>
+<a href="/new?template=snow">📋 Peticiones SNOW</a>
+<a href="/new?template=splunk">🔎 Búsqueda Splunk</a>
+<a href="/new?template=falcon">🔎 Búsqueda Falcon</a>
+<a href="/new?template=incidencia">🚨 Informe de incidencia</a>
+<a href="/new">📄 Página en blanco</a>
+</div></section>'''
         recent = "".join(f'<li><a href="/wiki/{p["slug"]}">{html.escape(p["title"])}</a><small>{html.escape(p.get("category",""))} · {html.escape(p.get("updated","").replace("T"," "))}</small></li>' for p in updated) or "<li>No hay páginas todavía.</li>"
         body = f'<h1>Panel principal</h1>{cards}{templates}<section><h2>Últimas modificaciones</h2><ul class="dashboard-list">{recent}</ul></section>'
         self.send_html(layout("Panel principal", body))

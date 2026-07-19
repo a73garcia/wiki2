@@ -284,9 +284,14 @@ def render(src: str) -> str:
 
 def template_content(name: str) -> str:
     templates = {
-        "procedimiento": """== Objetivo ==\n\nDescribe qué se quiere conseguir.\n\n== Requisitos ==\n\n- Acceso necesario\n- Permisos necesarios\n\n== Pasos ==\n\n1. Primer paso\n2. Segundo paso\n\n== Código o comandos ==\n\n```text\nComando o consulta\n```\n\n== Resultado esperado ==\n\nDescribe el resultado correcto.\n\n== Errores frecuentes ==\n\n!!! advertencia Precaución\nAñade aquí los riesgos o errores conocidos.\n\n== Rollback ==\n\nExplica cómo deshacer el cambio.\n""",
-        "splunk": """== Objetivo de la búsqueda ==\n\n== Origen de datos ==\n\n- Índice:\n- Sourcetype:\n\n== Consulta SPL ==\n\n```spl\nindex=ejemplo\n| stats count by host\n| sort - count\n```\n\n== Campos de salida ==\n\n== Interpretación ==\n""",
-        "incidencia": """== Resumen ==\n\n== Impacto ==\n\n== Línea temporal ==\n\n== Diagnóstico ==\n\n== Acciones realizadas ==\n\n== Solución ==\n\n== Prevención ==\n""",
+        "procedimiento": """Numero: PROC-\nTitulo: \nVersion: \nFecha: \nAutor: \nEstado: \nClasificacion: \n\n------------------------\n== Objetivo ==\n\n\n\n== Requisitos ==\n\n\n\n== Pasos ==\n\n\n\n== Código o comandos ==\n\n\n\n== Resultado esperado ==\n\n\n\n== Errores frecuentes ==\n\n!!! advertencia Precaución\n\n\n== Rollback ==\n\n\n""",
+
+        "ces": """Numero: CES-\nTitulo: \nVersion: \nFecha: \nAutor: \nEstado: \nClasificacion: \n\n------------------------\n== Objetivo ==\n\nDescribe qué se quiere conseguir.\n\n== Requisitos ==\n\n- Acceso necesario\n- Permisos necesarios\n\n== Pasos ==\n\n1. Primer paso\n2. Segundo paso\n\n== Código o comandos ==\n\n```text\nComando o consulta\n```\n\n== Resultado esperado ==\n\nDescribe el resultado correcto.\n\n== Errores frecuentes ==\n\n!!! advertencia Precaución\nAñade aquí los riesgos o errores conocidos.\n\n== Rollback ==\n\nExplica cómo deshacer el cambio.\n""",
+        
+       "proofpoint": """Numero: PRF-\nTitulo: \nVersion: \nFecha: \nAutor: \nEstado: \nClasificacion: \n\n------------------------\n== Objetivo ==\n\nDescribe qué se quiere conseguir.\n\n== Requisitos ==\n\n- Acceso necesario\n- Permisos necesarios\n\n== Pasos ==\n\n1. Primer paso\n2. Segundo paso\n\n== Código o comandos ==\n\n```text\nComando o consulta\n```\n\n== Resultado esperado ==\n\nDescribe el resultado correcto.\n\n== Errores frecuentes ==\n\n!!! advertencia Precaución\nAñade aquí los riesgos o errores conocidos.\n\n== Rollback ==\n\nExplica cómo deshacer el cambio.\n""",
+
+        "splunk": """Numero: SPL-\nTitulo: \nVersion: \nFecha: \nAutor: \nEstado: \nClasificacion: \n\n------------------------\n== Objetivo de la búsqueda ==\n\n== Origen de datos ==\n\n- Índice:\n- Sourcetype:\n\n== Consulta SPL ==\n\n```spl\nindex=ejemplo\n| stats count by host\n| sort - count\n```\n\n== Campos de salida ==\n\n== Interpretación ==\n""",
+        "incidencia": """Numero: INC-\nTitulo: \nVersion: \nFecha: \nAutor: \nEstado: \nClasificacion: \n\n------------------------\n== Resumen ==\n\n== Impacto ==\n\n== Línea temporal ==\n\n== Diagnóstico ==\n\n== Acciones realizadas ==\n\n== Solución ==\n\n== Prevención ==\n""",
     }
     return templates.get(name, "")
 
@@ -452,10 +457,11 @@ body {{
         pages = all_pages(); categories = load_categories(); favorites = load_favorites()
         updated = sorted(pages, key=lambda p: p.get("updated", ""), reverse=True)[:8]
         cards = f'''<div class="stats"><div><strong>{len(pages)}</strong><span>Procedimientos</span></div><div><strong>{len(categories)}</strong><span>Categorías</span></div><div><strong>{len(favorites)}</strong><span>Favoritos</span></div><div><strong>{sum(int(p.get("views",0)) for p in pages)}</strong><span>Consultas</span></div></div>'''
-        templates = '''<section><h2>Crear desde plantilla</h2><div class="template-grid"><a href="/new?template=procedimiento">📋 Procedimiento técnico</a><a href="/new?template=splunk">🔎 Búsqueda Splunk</a><a href="/new?template=incidencia">🚨 Informe de incidencia</a><a href="/new">📄 Página en blanco</a></div></section>'''
+        templates = '''<section><h2>Crear desde plantilla</h2><div class="template-grid"><a href="/new?template=procedimiento">📋 Procedimiento técnico</a><a href="/new?template=ces">📋 Procedimiento CES</a><a href="/new?template=proofpoint">📋 Procedimiento ProofPoint</a><a href="/new?template=splunk">🔎 Búsqueda Splunk</a><a href="/new?template=incidencia">🚨 Informe de incidencia</a><a href="/new">📄 Página en blanco</a></div></section>'''
         recent = "".join(f'<li><a href="/wiki/{p["slug"]}">{html.escape(p["title"])}</a><small>{html.escape(p.get("category",""))} · {html.escape(p.get("updated","").replace("T"," "))}</small></li>' for p in updated) or "<li>No hay páginas todavía.</li>"
         body = f'<h1>Panel principal</h1>{cards}{templates}<section><h2>Últimas modificaciones</h2><ul class="dashboard-list">{recent}</ul></section>'
         self.send_html(layout("Panel principal", body))
+
 
     def show_page(self, slug):
         page = load_page(slug)

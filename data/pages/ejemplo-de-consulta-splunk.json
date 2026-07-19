@@ -1,0 +1,8 @@
+{
+  "slug": "ejemplo-de-consulta-splunk",
+  "title": "Ejemplo de consulta Splunk",
+  "category": "Splunk",
+  "content": "== Consulta ==\n\n```spl\nindex=correo action_final!=\"incomplete\"\n| stats count AS correos by sender\n| sort - correos\n```",
+  "created": "2026-07-19T09:09:48",
+  "updated": "2026-07-19T09:09:48"
+}

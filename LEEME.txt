@@ -1,0 +1,87 @@
+WIKI DE PROCEDIMIENTOS PROFESIONAL - VERSIÓN 8
+================================================
+
+REQUISITOS
+- Windows con Python 3.13.3.
+- No necesita pip, Flask, Node.js ni librerías externas.
+
+INICIO
+1. Descomprima la carpeta completa.
+2. Ejecute iniciar_wiki.bat.
+3. Se abrirá el navegador automáticamente.
+4. Compruebe en el pie: Versión 8.0-profesional.
+
+DATOS
+- Publicaciones: data\pages
+- Categorías: data\categories.json
+- Imágenes: data\uploads
+- Favoritos: data\favorites.json
+- Recientes: data\recents.json
+
+FUNCIONES PRINCIPALES
+- Panel con estadísticas y plantillas.
+- Categorías dinámicas en el menú lateral.
+- Gestión de categorías.
+- Favoritos y páginas recientes.
+- Búsqueda por título, contenido, categoría y etiquetas.
+- Editor con barra de herramientas.
+- Inserción de imágenes con botón, Ctrl+V o arrastrar.
+- Código coloreado y botón Copiar.
+- Plantillas para procedimientos, Splunk e incidencias.
+- Documentos relacionados automáticamente.
+
+COPIA DE SEGURIDAD
+Copie la carpeta data completa para conservar publicaciones, imágenes y configuración.
+
+
+VISTA PREVIA
+------------
+En Crear página o Editar página pulse «Vista previa».
+
+La vista aparece debajo del editor sin guardar el documento y se actualiza
+automáticamente al cambiar el título, categoría, etiquetas o contenido.
+
+Muestra títulos, listas, avisos, imágenes y bloques de código coloreados.
+
+
+VISTA PREVIA ESTILO GITHUB
+--------------------------
+El editor dispone ahora de dos pestañas:
+
+- Editar
+- Vista previa
+
+Ambas ocupan exactamente el mismo espacio. Al pulsar Vista previa, el área de
+edición se sustituye por el documento renderizado. Al volver a Editar, aparece
+de nuevo el contenido en el mismo lugar.
+
+La vista previa muestra títulos, listas, avisos, imágenes y código coloreado.
+
+
+VISTA PREVIA SOLO DEL DOCUMENTO
+-------------------------------
+La pestaña Vista previa muestra únicamente el documento renderizado.
+
+No aparecen la cabecera, el buscador, el menú lateral, el pie de página ni
+los controles generales de la wiki. El visor ocupa la misma posición que el
+área de edición.
+
+
+INICIO MEDIANTE PYTHON
+----------------------
+Para iniciar la wiki sin utilizar archivos BAT:
+
+1. Abra la carpeta del proyecto.
+2. Haga doble clic en:
+
+   iniciar_wiki.py
+
+También puede ejecutarlo desde una consola:
+
+   python iniciar_wiki.py
+
+El lanzador comprueba Python, localiza server.py, inicia el servidor y abre
+la wiki en el navegador. Para detenerla, cierre la consola o pulse Ctrl+C.
+
+Se mantiene INICIAR_WIKI.bat únicamente como opción alternativa. Este BAT
+se limita a ejecutar iniciar_wiki.py.

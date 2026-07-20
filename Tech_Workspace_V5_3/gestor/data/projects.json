@@ -1,0 +1,16 @@
+[
+  {
+    "id": "prj_demo",
+    "name": "Proyecto de ejemplo",
+    "description": "Proyecto inicial para comprobar el funcionamiento del gestor.",
+    "owner": "",
+    "status": "En curso",
+    "priority": "Media",
+    "progress": 35,
+    "start_date": "2026-07-20",
+    "end_date": "2026-08-15",
+    "history": [{"date":"2026-07-20 18:00","text":"Proyecto creado y planificación inicial registrada."}],
+    "created": "2026-07-20T18:00:00",
+    "updated": "2026-07-20T18:00:00"
+  }
+]

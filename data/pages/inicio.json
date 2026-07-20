@@ -1,8 +1,0 @@
-{
-  "slug": "inicio",
-  "title": "Inicio",
-  "category": "General",
-  "content": "Bienvenido a la **Wiki de Procedimientos**.\n\n== Accesos rápidos ==\n\n* [[Cómo crear un procedimiento]]\n* [[Ejemplo de consulta Splunk]]\n\n== Funciones ==\n\n* Crear y editar páginas.\n* Buscar contenido.\n* Organizar y gestionar categorías.\n* Añadir enlaces a SharePoint.\n* Mostrar bloques de código coloreados.\n\n> Los datos se guardan en la carpeta data/pages.",
-  "created": "2026-07-19T09:09:48",
-  "updated": "2026-07-19T09:09:48"
-}

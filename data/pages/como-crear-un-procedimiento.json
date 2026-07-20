@@ -1,8 +1,0 @@
-{
-  "slug": "como-crear-un-procedimiento",
-  "title": "Cómo crear un procedimiento",
-  "category": "Documentación",
-  "content": "== Estructura recomendada ==\n\n1. Objetivo.\n2. Alcance.\n3. Requisitos previos.\n4. Pasos.\n5. Validación.\n6. Resolución de errores.\n\n```text\nPaso 1: Acceder a la consola.\nPaso 2: Realizar la acción.\nPaso 3: Validar el resultado.\n```",
-  "created": "2026-07-19T09:09:48",
-  "updated": "2026-07-19T09:09:48"
-}

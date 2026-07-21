@@ -1,5 +1,0 @@
-MÓDULO BAU
-==========
-Se inicia automáticamente con Tech Workspace.
-Permite gestionar peticiones, incidencias, consultas, cambios y problemas.
-Los datos se guardan en bau/data/requests.json y los archivos copiados en bau/data/attachments.
